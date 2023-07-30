@@ -330,6 +330,31 @@ export const handlers = {
       isSavingWorkspaceInfo: true,
     };
   },
+  [ReduxActionTypes.CREATE_WORKSPACE_SUCCESS]: (
+    state: ApplicationsReduxState,
+    action: ReduxAction<any>,
+  ) => {
+    const {
+      users,
+      workspace: { userPermissions },
+    } = state.userWorkspaces[0];
+
+    const newWorkspace = {
+      applications: [],
+      users,
+      workspace: {
+        ...action.payload,
+        userPermissions,
+      },
+    };
+
+    const workspaces = [...state.userWorkspaces, newWorkspace];
+
+    return {
+      ...state,
+      userWorkspaces: workspaces,
+    };
+  },
   [ReduxActionTypes.SAVE_WORKSPACE_SUCCESS]: (
     state: ApplicationsReduxState,
     action: ReduxAction<{

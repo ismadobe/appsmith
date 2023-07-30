@@ -33,7 +33,7 @@ import { getCurrentUser } from "selectors/usersSelectors";
 import type { Workspace } from "@appsmith/constants/workspaceConstants";
 import history from "utils/history";
 import { APPLICATIONS_URL } from "constants/routes";
-import { getAllApplications } from "@appsmith/actions/applicationActions";
+// import { getAllApplications } from "@appsmith/actions/applicationActions";
 import log from "loglevel";
 import type { User } from "constants/userConstants";
 import {
@@ -283,7 +283,7 @@ export function* createWorkspaceSaga(
         payload: response.data,
       });
 
-      yield put(getAllApplications());
+      // yield put(getAllApplications());
       yield call(resolve);
     }
 
